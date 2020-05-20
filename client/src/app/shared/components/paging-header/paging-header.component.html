@@ -1,0 +1,8 @@
+<header>
+    <span *ngIf="this.totalCount && this.totalCount > 0">
+        Showing <strong>{{ this.displayCountFrom }} - {{ this.displayCountTo }}</strong> of <strong>{{ this.totalCount }}</strong>
+    </span>
+    <span *ngIf="this.totalCount === 0">
+        There are <strong>{{ this.totalCount }}</strong> results for this filter
+    </span>
+</header>
