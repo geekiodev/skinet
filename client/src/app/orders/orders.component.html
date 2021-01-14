@@ -1,0 +1,53 @@
+<div class="container mt-2">
+    <div *ngIf="orders === null">
+        <p>There are no orders</p>
+    </div>
+
+    <ng-container *ngIf="orders">
+        <div class="table-responsive">
+            <table class="table" style="cursor: pointer">
+                <thead>
+                    <tr>
+                        <th class="border-0 bg-light" scope="col">
+                            <div class="p-2 px-3 text-uppercase">Order</div>
+                        </th>
+                        <th class="border-0 bg-light" scope="col">
+                            <div class="p-2 px-3 text-uppercase">Date</div>
+                        </th>
+                        <th class="border-0 bg-light" scope="col">
+                            <div class="p-2 px-3 text-uppercase">Total</div>
+                        </th>
+                        <th class="border-0 bg-light" scope="col">
+                            <div class="p-2 px-3 text-uppercase">Status</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let item of orders"
+                        routerLink="/orders/{{ item.id }}"
+                    >
+                        <td class="align-middle">
+                            <strong>
+                                <a
+                                    routerLink="/orders/{{ item.id }}"
+                                    class="text-dark"
+                                    >#{{ item.id }}</a
+                                ></strong
+                            >
+                        </td>
+                        <td class="align-middle">
+                            {{ item.orderDate | date: "medium" }}
+                        </td>
+                        <td class="align-middle">
+                            {{ item.total | currency }}
+                        </td>
+                        <td class="align-middle">
+                            {{ item.status }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+</div>
